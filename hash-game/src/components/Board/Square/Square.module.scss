@@ -1,0 +1,70 @@
+@import "../../../common/styles/colors.scss";
+@import "../../../common/styles/animations.scss";
+
+.square {
+    background-color: #424355;
+    border-radius: 20px;
+    height: 24%;
+    width: 24%;
+    list-style: none;
+    box-shadow: inset 10px 10px 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3%;
+    cursor: pointer;
+
+    .circle {
+        width: 100%;
+        height: 100%;
+
+        circle {
+            cx: 50%;
+            cy: 50%;
+            r: 40%;
+            stroke: $circle-red;
+            stroke-width: 20px;
+            fill: none;
+            stroke-dasharray: 350;
+            stroke-dashoffset: 350;
+            animation: draw 1s ease;
+            animation-fill-mode: forwards;
+            stroke-linecap: round;
+            transform: rotate(230deg);
+            transform-origin: 50% 50%;
+        }
+    }
+    
+    .cross {
+        width: 100%;
+        height: 100%;
+
+        &-left-line {
+            width: 100%;
+            height: 100%;
+            d: path("M 20 20 L 100 100");
+            fill: none;
+            stroke: $cross-blue;
+            stroke-width: 20px;
+            stroke-linecap: round;
+            stroke-dasharray: 350;
+            stroke-dashoffset: 350;
+            animation: draw 1s ease 0s;
+            animation-fill-mode: forwards;
+        }
+
+        &-right-line {
+            width: 100%;
+            height: 100%;
+            d: path("M 20 100 L 100 20");
+            fill: none;
+            stroke: $cross-blue;
+            stroke-width: 20px;
+            stroke-linecap: round;
+            stroke-dasharray: 350;
+            stroke-dashoffset: 350;
+            animation: draw 1s ease 0.3s;
+            animation-fill-mode: forwards;
+        }
+    }
+}
