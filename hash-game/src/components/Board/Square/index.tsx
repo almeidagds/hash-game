@@ -1,10 +1,11 @@
 import style from "./Square.module.scss";
 
 interface Props {
-    value?: "x" | "o" | null;
+    value?: any;
+    onClick?: () => void;
 }
 
-export function Square({value}: Props) {
+export function Square({value, onClick}: Props) {
 
     function renderCorrectValue(value: any)  {
 
@@ -26,7 +27,7 @@ export function Square({value}: Props) {
     }
 
     return (
-        <li className={style.square}>
+        <li className={style.square} onClick={onClick} >
             {renderCorrectValue(value)}
         </li>
     );
