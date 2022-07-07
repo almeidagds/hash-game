@@ -25,10 +25,6 @@ export function Board() {
 
       if (winner) {
         console.log("Winner: " + winner);
-        setBoard({
-          squares: Array(9).fill(null),
-          xIsNext: true
-        });
       }
     }
   }
@@ -58,6 +54,7 @@ export function Board() {
   
   return (
       <div className={style.board}>
+        <h2 className={style.status_title}><strong>Status:&nbsp;</strong><span className={board.xIsNext ? style.status_title_cross : style.status_title_circle}>{board.xIsNext ? "X" : "O"}&nbsp;</span> is next...</h2>
         <ul>
           <Square value={board.squares[0]} onClick={() => setSquareValue(0)} />
           <Square value={board.squares[1]} onClick={() => setSquareValue(1)} />
