@@ -1,0 +1,10 @@
+.modal {
+    height: auto;
+    width: 400px;
+    display: none;
+    position: absolute;
+    top: calc(50% - 200px);
+    left: calc(50% - 200px);
+    border-radius: 20px;
+    background-color: antiquewhite;
+}
