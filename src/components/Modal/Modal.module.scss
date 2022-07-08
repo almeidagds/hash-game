@@ -4,7 +4,7 @@
 .modal {
     height: auto;
     width: 600px;
-    display: block;
+    display: none;
     position: absolute;
     top: calc(50% - 200px);
     left: calc(50% - 300px);
@@ -17,7 +17,10 @@
         color: #fff;
         background-color: #000;
         border-radius: 20px 20px 0 0;
-        padding: .5em 1em
+        padding: .5em 1em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .body {
@@ -33,5 +36,24 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+        .button {
+            font-size: 1em;
+            font-family: "Paytone One", sans-serif;
+            text-transform: uppercase;
+            padding: .5em 2em;
+            border: none;
+            color: #fff;
+            border-radius: 20px;
+        }
+
+        .button:nth-child(1) {
+            background-color: $cross-blue;
+            margin-right: .5em;
+        }
+
+        .button:nth-child(2) {
+            background-color: $circle-red;
+        }
     }
 }
