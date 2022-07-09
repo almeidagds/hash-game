@@ -4,7 +4,7 @@
 .modal {
     height: auto;
     width: 600px;
-    display: none;
+    display: block;
     position: absolute;
     top: calc(50% - 200px);
     left: calc(50% - 300px);
@@ -15,12 +15,16 @@
         font-size: 2em;
         font-family: "Paytone One", sans-serif;
         color: #fff;
-        background-color: #000;
+        background-color: #1c1c2a;
         border-radius: 20px 20px 0 0;
         padding: .5em 1em;
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        .close-button {
+            cursor: pointer;
+        }
     }
 
     .body {
@@ -45,6 +49,14 @@
             border: none;
             color: #fff;
             border-radius: 20px;
+            transition: .2s ease 0s;
+        }
+
+        .button:hover {
+            cursor: pointer;
+            transform: translateX(-1px);
+            transform: translateY(-1px);
+            box-shadow: 1px 1px 5px rgba(0,0,0,0.7);
         }
 
         .button:nth-child(1) {
