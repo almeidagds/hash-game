@@ -1,6 +1,38 @@
 @import "../../common/styles/colors.scss";
 @import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+.fade-in {
+    animation: fadeIn .6s;
+}
 
+.fade-out {
+    animation: fadeOut .6s;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes fadeIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    to {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+}
 .modal {
     height: auto;
     width: 600px;
@@ -10,7 +42,7 @@
     left: calc(50% - 300px);
     border-radius: 22px;
     background-color: #fff;
-
+    
     .title {
         font-size: 2em;
         font-family: "Paytone One", sans-serif;

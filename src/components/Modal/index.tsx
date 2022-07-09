@@ -11,11 +11,14 @@ interface Props {
 export function Modal({id, title, body, buttons}: Props) {
 
     function closeModal(id: string): void {
-        $(`#${id}`).css("display", "none");
+        $(`#${id}`).toggleClass(style["fade-in"]);
+        $(`#${id}`).toggleClass(style["fade-out"]);
+
+        setTimeout(() => $(`#${id}`).css("display", "none"), 600);
     }
 
     return (
-        <div id={id} className={style.modal}>
+        <div id={id} className={style.modal + " " + style["fade-in"]} >
             <header className={style.title}>
                 <h1>{title}</h1>
                 <span className={style["close-button"]} onClick={() => closeModal(id)}>
