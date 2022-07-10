@@ -1,5 +1,5 @@
-@import "../../common/styles/colors.scss";
-@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+@import "../../common/styles/_variables.scss";
+
 .fade-in {
     animation: fadeIn .6s;
 }
@@ -9,30 +9,6 @@
     animation-fill-mode: forwards;
 }
 
-
-@keyframes fadeIn {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes fadeOut {
-    from {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    
-    to {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-}
 .modal {
     height: auto;
     width: 600px;
@@ -41,13 +17,13 @@
     top: calc(50% - 200px);
     left: calc(50% - 300px);
     border-radius: 22px;
-    background-color: #fff;
+    background-color: $white;
     
     .title {
         font-size: 2em;
         font-family: "Paytone One", sans-serif;
-        color: #fff;
-        background-color: #1c1c2a;
+        color: $white;
+        background-color: $dark-blue;
         border-radius: 20px 20px 0 0;
         padding: .5em 1em;
         display: flex;
@@ -72,32 +48,5 @@
         display: flex;
         align-items: center;
         justify-content: center;
-
-        .button {
-            font-size: 1em;
-            font-family: "Paytone One", sans-serif;
-            text-transform: uppercase;
-            padding: .5em 2em;
-            border: none;
-            color: #fff;
-            border-radius: 20px;
-            transition: .2s ease 0s;
-        }
-
-        .button:hover {
-            cursor: pointer;
-            transform: translateX(-1px);
-            transform: translateY(-1px);
-            box-shadow: 1px 1px 5px rgba(0,0,0,0.7);
-        }
-
-        .button:nth-child(1) {
-            background-color: $cross-blue;
-            margin-right: .5em;
-        }
-
-        .button:nth-child(2) {
-            background-color: $circle-red;
-        }
     }
 }

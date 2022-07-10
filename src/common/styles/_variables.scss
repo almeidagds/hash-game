@@ -1,0 +1,52 @@
+//Importing fonts
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+
+//Colors
+
+$circle-red: #f62459;
+$cross-blue: #36dbd7;
+$dark-blue: #1c1c2a;
+$deep-ocean-blue: #28293D;
+$medium-gray: #424355;
+$white: #fff;
+
+//Shadows
+
+$square-inset-shadow: inset 10px 10px 10px rgba(0,0,0,0.1);
+$button-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+
+//Animations
+
+@keyframes draw {
+    0% {
+        stroke-dashoffset: 350;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    to {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+}

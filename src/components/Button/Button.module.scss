@@ -1,0 +1,32 @@
+@import "../../common/styles/variables.scss";
+
+.button {
+    font-size: 1em;
+    font-family: "Paytone One", sans-serif;
+    text-transform: uppercase;
+    padding: .5em 2em;
+    border: none;
+    color: #fff;
+    border-radius: 20px;
+    transition: .2s ease 0s;
+    margin-right: .5em;
+}
+
+.button-bg-blue {
+    background-color: $cross-blue;
+}
+
+.button-bg-red {
+    background-color: $circle-red;
+}
+
+.button:hover {
+    cursor: pointer;
+    transform: translateX(-1px);
+    transform: translateY(-1px);
+    box-shadow: $button-shadow;
+}
+
+.button:last-child {
+    margin-right: 0;
+}

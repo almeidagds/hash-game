@@ -1,13 +1,12 @@
-@import "../../../common/styles/colors.scss";
-@import "../../../common/styles/animations.scss";
+@import "../../../common/styles/_variables.scss";
 
 .square {
-    background-color: #424355;
+    background-color: $medium-gray;
     border-radius: 20px;
     height: 24%;
     width: 24%;
     list-style: none;
-    box-shadow: inset 10px 10px 10px rgba(0,0,0,0.1);
+    box-shadow: $square-inset-shadow;
     display: flex;
     align-items: center;
     justify-content: center;

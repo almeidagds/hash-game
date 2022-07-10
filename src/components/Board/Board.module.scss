@@ -1,6 +1,4 @@
-@import "../../common/styles/animations.scss";
-@import "../../common/styles/colors.scss";
-@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+@import "../../common/styles/_variables.scss";
 
 .board {
     display: flex;
@@ -12,7 +10,7 @@
 
     .status_title {
         font-family: 'Paytone One', sans-serif;
-        color: #fff;
+        color: $white;
         width: 100%;
         display: flex;
         align-items: center;
