@@ -1,5 +1,6 @@
 import style from "./Modal.module.scss";
 import $ from "jquery";
+import { Button } from "../Button";
 
 interface Props {
     id: string;
@@ -29,8 +30,9 @@ export function Modal({id, title, body, buttons}: Props) {
                 {body}
             </div>
             <div className={style.footer}>
-                <button className={style.button}>Play again</button>
-                <button className={style.button}>Close</button>
+                <Button type="button" backgroundColor="blue" text="Play again" onClick={() => console.log("teste")}/>
+
+                <Button type="button" backgroundColor="red" text="Close" onClick={() => closeModal(id)}/>
             </div>
         </div>
     );
