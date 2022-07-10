@@ -1,6 +1,6 @@
 import style from "./Button.module.scss";
 
-interface Props {
+export interface ButtonOptions {
     type: "button" | "reset" | "submit";
     backgroundColor?: "red" | "blue" | string;
     value?: string;
@@ -16,7 +16,7 @@ export function Button({
     name,
     text,
     onClick
-}: Props) {
+}: ButtonOptions) {
 
     return (
         <button className={`${style.button} ${backgroundColor === "blue" ? style["button-bg-blue"] : style["button-bg-red"]}`}

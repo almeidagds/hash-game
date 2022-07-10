@@ -1,12 +1,12 @@
 import style from "./Modal.module.scss";
 import $ from "jquery";
-import { Button } from "../Button";
+import { Button, ButtonOptions } from "../Button";
 
 interface Props {
     id: string;
     title: string;
     body: string;
-    buttons?: string;
+    buttons?: ButtonOptions[];
 }
 
 export function Modal({id, title, body, buttons}: Props) {
@@ -14,7 +14,6 @@ export function Modal({id, title, body, buttons}: Props) {
     function closeModal(id: string): void {
         $(`#${id}`).toggleClass(style["fade-in"]);
         $(`#${id}`).toggleClass(style["fade-out"]);
-
         setTimeout(() => $(`#${id}`).css("display", "none"), 600);
     }
 
@@ -30,9 +29,19 @@ export function Modal({id, title, body, buttons}: Props) {
                 {body}
             </div>
             <div className={style.footer}>
-                <Button type="button" backgroundColor="blue" text="Play again" onClick={() => console.log("teste")}/>
-
-                <Button type="button" backgroundColor="red" text="Close" onClick={() => closeModal(id)}/>
+                {
+                    buttons?.forEach((button: ButtonOptions, index: number) => {
+                        return (
+                            <Button backgroundColor={button.backgroundColor}
+                                    text={button.text}
+                                    type={button.type}
+                                    value={button.value}
+                                    name={button.name}
+                                    onClick={button.onClick}
+                                    key={index} />
+                        );
+                    });
+                }
             </div>
         </div>
     );

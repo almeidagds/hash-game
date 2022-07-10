@@ -1,8 +1,13 @@
 import { useState } from "react";
+import { Modal } from "../Modal";
 import style from "./Board.module.scss"
 import { Square, squareOptions } from "./Square";
+import { v4 as uuidv4 } from 'uuid';
+import $ from "jquery";
 
 export function Board() {
+
+  const idWinnerModal: string = uuidv4();
 
   let [board, setBoard] = useState({
     squares: Array(9).fill(null),
@@ -49,7 +54,16 @@ export function Board() {
       }
     });
 
-    return winner;
+    if (winner) {
+      $(`#${idWinnerModal}`).css("display","block");
+    };
+  }
+
+  function restartGame() {
+    setBoard({
+      squares: Array(9).fill(null),
+      xIsNext: board.xIsNext
+    });
   }
   
   return (
@@ -66,6 +80,10 @@ export function Board() {
           <Square value={board.squares[7]} onClick={() => setSquareValue(7)} />
           <Square value={board.squares[8]} onClick={() => setSquareValue(8)} />
         </ul>
+
+        <Modal id={idWinnerModal}
+             title="And the winner is..."
+             body="Lorem ipsum testando um corpo qualquer aqui nesse espaço." />
       </div>
   );
 }
