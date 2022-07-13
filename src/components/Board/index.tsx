@@ -82,8 +82,15 @@ export function Board() {
         </ul>
 
         <Modal id={idWinnerModal}
-             title="And the winner is..."
-             body="Lorem ipsum testando um corpo qualquer aqui nesse espaço." />
+            title="And the winner is..."
+            body="Lorem ipsum testando um corpo qualquer aqui nesse espaço."
+            buttons={[
+              {
+                type: "button",
+                text: "Jogar novamente",
+                onClick: () => restartGame()
+              }
+             ]} />
       </div>
   );
 }
