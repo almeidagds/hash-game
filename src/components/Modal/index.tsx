@@ -2,8 +2,7 @@ import style from "./Modal.module.scss";
 import $ from "jquery";
 import { Button, ButtonOptions } from "../Button";
 import { v4 as uuidv4 } from 'uuid';
-import { render } from "@testing-library/react";
-import { stringify } from "querystring";
+
 
 interface Props {
     id?: string;

@@ -9,7 +9,7 @@ interface Props {
 
 export function Square({value, onClick}: Props) {
 
-    function renderValueSVG(value: any)  {
+    function renderValueSVG(value: squareOptions)  {
         if (value === "x") {
             return <svg className={style.cross}><path className={style['cross-left-line']}></path><path className={style['cross-right-line']}></path></svg>;
         } else if (value === "o") {
