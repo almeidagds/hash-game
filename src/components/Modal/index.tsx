@@ -19,9 +19,9 @@ export function Modal({id = uuidv4(), title, body, buttons}: Props) {
         setTimeout(() => $(`#${id}`).css("display", "none"), 600);
     }
 
-    function renderButtons(buttons: ButtonOptions[]) {
-        console.log(buttons);
-    }
+    const modalButtons = buttons.map((button: ButtonOptions) => {
+        return <Button type={button.type} text={button.text} onClick={button.onClick} backgroundColor={button.backgroundColor} />
+    });
 
     return (
         <div id={id} className={`${style.modal} ${style["fade-in"]}`} >
@@ -34,7 +34,8 @@ export function Modal({id = uuidv4(), title, body, buttons}: Props) {
             <div className={style.body}>
                 {body}
             </div>
-            <div className={style.footer} onClick={() => renderButtons(buttons)}>
+            <div className={style.footer}>
+                {modalButtons}
             </div>
         </div>
     );
