@@ -101,7 +101,15 @@ export function Board() {
           <Square value={board.squares[7]} onClick={() => setSquareValue(7)} />
           <Square value={board.squares[8]} onClick={() => setSquareValue(8)} />
         </ul>
-        
+        {
+          checkIfIsGameOver() ?
+          <span 
+            className={`${style["play_again"]} ${calculateWinner(board.squares) === "x" ? style["play_again_blue"] : style["play_again_red"]}`}
+            onClick={() => restartGame()}>
+            Play again
+          </span>
+          : ""
+        }
       </div>
   );
 }
