@@ -7,8 +7,6 @@ import $ from "jquery";
 
 export function Board() {
 
-  const idWinnerModal: string = uuidv4();
-
   let [board, setBoard] = useState({
     squares: Array(9).fill(null),
     xIsNext: true
@@ -16,25 +14,27 @@ export function Board() {
 
   function setSquareValue(index: number) {
 
-    if (!board.squares[index]) {
+    const squares = board.squares;
+    const isSelectedSquareEmpty = !board.squares[index];
+    const isGameOver = checkIfIsGameOver();
 
-      const squares = board.squares;
+    if (isSelectedSquareEmpty && !isGameOver) {
+  
       squares[index] = board.xIsNext ? "x" : "o";
-
+      
       setBoard({
         squares: squares, 
         xIsNext: !board.xIsNext
       });
-
-      const winner = calculateWinner(squares);
-
-      if (winner) {
-        console.log("Winner: " + winner);
-      }
     }
   }
 
-  function calculateWinner(squares: squareOptions[]): squareOptions | void {
+  function checkIfIsGameOver(): boolean {
+    const squares = board.squares;
+    return !!calculateWinner(squares);
+  }
+
+  function calculateWinner(squares: squareOptions[]): squareOptions | null {
     const winnerLines: Array<number[]> = [
       [0, 1, 2],
       [3, 4, 5],
@@ -46,7 +46,8 @@ export function Board() {
       [2, 4, 6],
     ];
 
-    let winner;
+    let winner = null;
+
     winnerLines.forEach((winnerLine) => {
       const [a, b, c] = winnerLine;
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
@@ -54,9 +55,7 @@ export function Board() {
       }
     });
 
-    if (winner) {
-      $(`#${idWinnerModal}`).css("display","block");
-    };
+    return winner;
   }
 
   function restartGame() {
@@ -68,7 +67,29 @@ export function Board() {
   
   return (
       <div className={style.board}>
-        <h2 className={style.status_title}><strong>Status:&nbsp;</strong><span className={board.xIsNext ? style.status_title_cross : style.status_title_circle}>{board.xIsNext ? "X" : "O"}&nbsp;</span> is next...</h2>
+        <h2 className={style.status_title}>
+          <strong>Status:&nbsp;</strong>
+          {
+            checkIfIsGameOver() ?
+            <span>
+              the winner was&nbsp;
+              <span className={calculateWinner(board.squares) === "x" ? style.status_title_cross : style.status_title_circle}>
+                {calculateWinner(board.squares)?.toLocaleUpperCase()}
+                &nbsp;
+              </span> 
+            </span>
+            :
+            <span>
+              <span className={board.xIsNext ? style.status_title_cross : style.status_title_circle}>
+                {board.xIsNext ? "X" : "O"}
+                &nbsp;
+              </span> 
+              is next...
+            </span>
+
+
+          }
+        </h2>
         <ul>
           <Square value={board.squares[0]} onClick={() => setSquareValue(0)} />
           <Square value={board.squares[1]} onClick={() => setSquareValue(1)} />
@@ -80,17 +101,7 @@ export function Board() {
           <Square value={board.squares[7]} onClick={() => setSquareValue(7)} />
           <Square value={board.squares[8]} onClick={() => setSquareValue(8)} />
         </ul>
-
-        <Modal id={idWinnerModal}
-            title="And the winner is..."
-            body="Lorem ipsum testando um corpo qualquer aqui nesse espaço."
-            buttons={[
-              {
-                type: "button",
-                text: "Jogar novamente",
-                onClick: () => restartGame()
-              }
-             ]} />
+        
       </div>
   );
 }

@@ -16,7 +16,7 @@ export function Modal({id = uuidv4(), title, body, buttons}: Props) {
     function closeModal(id: string): void {
         $(`#${id}`).toggleClass(style["fade-in"]);
         $(`#${id}`).toggleClass(style["fade-out"]);
-        setTimeout(() => $(`#${id}`).css("display", "none"), 600);
+        setTimeout(() => $(`#${id}`).css ("display", "none"), 600);
     }
 
     const modalButtons = buttons.map((button: ButtonOptions) => {
