@@ -28,7 +28,7 @@ export function Board() {
 
   function checkIfIsGameOver(): boolean {
     const squares = board.squares;
-    return !!calculateWinner(squares);
+    return !!calculateWinner(squares) || calculateDraw(squares);
   }
 
   function calculateWinner(squares: squareOptions[]): squareOptions | null {
@@ -53,6 +53,10 @@ export function Board() {
     });
 
     return winner;
+  }
+  
+  function calculateDraw(squares: squareOptions[]): boolean {
+    return !squares.some(square => !square) && !calculateWinner(squares);
   }
 
   function restartGame() {
