@@ -72,13 +72,18 @@ export function Board() {
           <strong>Status:&nbsp;</strong>
           {
             checkIfIsGameOver() ?
-            <span>
-              the winner was&nbsp;
-              <span className={calculateWinner(board.squares) === "x" ? style.status_title_cross : style.status_title_circle}>
-                {calculateWinner(board.squares)?.toLocaleUpperCase()}
-                &nbsp;
+              calculateDraw(board.squares) ?
+              <span>
+                draw
               </span> 
-            </span>
+              :
+              <span>
+                the winner was&nbsp;
+                <span className={calculateWinner(board.squares) === "x" ? style.status_title_cross : style.status_title_circle}>
+                  {calculateWinner(board.squares)?.toLocaleUpperCase()}
+                  &nbsp;
+                </span>
+              </span> 
             :
             <span>
               <span className={board.xIsNext ? style.status_title_cross : style.status_title_circle}>
