@@ -9,17 +9,27 @@ interface Props {
 
 export function Square({value, onClick}: Props) {
 
-    function renderValueSVG(value: squareOptions)  {
+    function renderSVG(value: squareOptions)  {
         if (value === "x") {
-            return <svg className={style.cross}><path className={style['cross-left-line']}></path><path className={style['cross-right-line']}></path></svg>;
+            return (
+                <svg className={style.cross}>
+                    <path className={style['cross-left-line']}></path>
+                    <path className={style['cross-right-line']}></path>
+                </svg>
+            );
+
         } else if (value === "o") {
-            return <svg className={style.circle}><circle /></svg>;
+            return (
+                <svg className={style.circle}>
+                    <circle />
+                </svg>
+            );
         }
     }
 
     return (
         <li className={style.square} onClick={onClick} >
-            {renderValueSVG(value)}
+            {renderSVG(value)}
         </li>
     );
 }
