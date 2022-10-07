@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Player from "../../player";
 import style from "./Board.module.scss"
 import { Square, squareOptions } from "./Square";
 
@@ -8,6 +9,7 @@ export function Board() {
     squares: Array(9).fill(null),
     xIsNext: true
   });
+  const player = new Player();
 
   function setSquareValue(index: number) {
 
@@ -24,6 +26,8 @@ export function Board() {
         xIsNext: !board.xIsNext
       });
     }
+
+    console.log(player.getAvailableMoves(squares));
   }
 
   function checkIfIsGameOver(): boolean {
