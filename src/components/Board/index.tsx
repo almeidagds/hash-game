@@ -1,9 +1,6 @@
 import { useState } from "react";
-import { Modal } from "../Modal";
 import style from "./Board.module.scss"
 import { Square, squareOptions } from "./Square";
-import { v4 as uuidv4 } from 'uuid';
-import $ from "jquery";
 
 export function Board() {
 
