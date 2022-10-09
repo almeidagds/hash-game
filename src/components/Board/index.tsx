@@ -27,11 +27,9 @@ export function Board() {
       });
     }
 
-    console.log(player.getAvailableMoves(squares));
   }
 
-  function checkIfIsGameOver(): boolean {
-    const squares = board.squares;
+  function checkIfIsGameOver(squares: squareOptions[] = board.squares): boolean {
     return !!calculateWinner(squares) || calculateDraw(squares);
   }
 
