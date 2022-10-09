@@ -11,23 +11,37 @@ export function Board() {
     xIsNext: true
   });
   const player = new Player("o");
-
+  
   function setSquareValue(index: number) {
 
-    const squares = board.squares;
-    const isSelectedSquareEmpty = !board.squares[index];
-    const isGameOver = checkIfIsGameOver(board.squares);
+    let squares = board.squares;
+    let isSelectedSquareEmpty = !board.squares[index];
+    let isGameOver = checkIfIsGameOver(board.squares);
 
     if (isSelectedSquareEmpty && !isGameOver) {
   
-      squares[index] = board.xIsNext ? "x" : "o";
+      squares[index] = "x";
       
       setBoard({
         squares: squares, 
-        xIsNext: !board.xIsNext
+        xIsNext: true
       });
 
-      console.log("Jogada escolhida: " + player.getBestMove(squares, board.xIsNext ? "x" : "o"));
+    }
+
+    squares = board.squares;
+    isSelectedSquareEmpty = !board.squares[player.getBestMove(squares, "o")];
+    isGameOver = checkIfIsGameOver(board.squares);
+
+    if (isSelectedSquareEmpty && !isGameOver) {
+
+      squares[player.getBestMove(squares, "o")] = "o";
+
+      setBoard({
+        squares: squares, 
+        xIsNext: true
+      });
+
     }
   
   }

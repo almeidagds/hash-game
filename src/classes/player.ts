@@ -6,7 +6,7 @@ export default class Player {
     nodesMap: Map<any, any>;
     symbol: squareOptions;
 
-    constructor(symbol: squareOptions, maxDepth = 45) {
+    constructor(symbol: squareOptions, maxDepth = 2) {
         this.maxDepth = maxDepth;
         this.nodesMap = new Map();
         this.symbol = symbol;
@@ -148,12 +148,12 @@ export default class Player {
             bestScore = isCPUPlaying ? Math.max(bestScore, moveScore) : Math.min(bestScore, moveScore);
             bestPositionToPlay = bestScore === moveScore ? position : bestPositionToPlay;
             if (depth === 0) console.log("Posição " + position + ": " + moveScore);
-            return bestScore;
         });
 
         if (depth === 0) {
             return bestPositionToPlay;
         }
+        return bestScore;
     }
 
 }
