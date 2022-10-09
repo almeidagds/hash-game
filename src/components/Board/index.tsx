@@ -10,7 +10,7 @@ export function Board() {
     squares: Array(9).fill(null),
     xIsNext: true
   });
-  const player = new Player();
+  const player = new Player("o");
 
   function setSquareValue(index: number) {
 
@@ -26,6 +26,8 @@ export function Board() {
         squares: squares, 
         xIsNext: !board.xIsNext
       });
+
+      console.log("Jogada escolhida: " + player.getBestMove(squares, board.xIsNext ? "x" : "o"));
     }
   
   }
