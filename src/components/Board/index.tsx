@@ -1,7 +1,8 @@
 import { useState } from "react";
-import Player from "../../player";
+import Player from "../../classes/player";
+import { checkIfIsGameOver, calculateDraw, calculateWinner } from "../../common/scripts/board-functions";
 import style from "./Board.module.scss"
-import { Square, squareOptions } from "./Square";
+import { Square } from "./Square";
 
 export function Board() {
 
@@ -15,7 +16,7 @@ export function Board() {
 
     const squares = board.squares;
     const isSelectedSquareEmpty = !board.squares[index];
-    const isGameOver = checkIfIsGameOver();
+    const isGameOver = checkIfIsGameOver(board.squares);
 
     if (isSelectedSquareEmpty && !isGameOver) {
   
@@ -26,39 +27,7 @@ export function Board() {
         xIsNext: !board.xIsNext
       });
     }
-
-  }
-
-  function checkIfIsGameOver(squares: squareOptions[] = board.squares): boolean {
-    return !!calculateWinner(squares) || calculateDraw(squares);
-  }
-
-  function calculateWinner(squares: squareOptions[]): squareOptions | null {
-    const winnerLines: Array<number[]> = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6],
-    ];
-
-    let winner = null;
-
-    winnerLines.forEach((winnerLine) => {
-      const [a, b, c] = winnerLine;
-      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        winner = squares[a];
-      }
-    });
-
-    return winner;
-  }
   
-  function calculateDraw(squares: squareOptions[]): boolean {
-    return !squares.some(square => !square) && !calculateWinner(squares);
   }
 
   function restartGame() {
@@ -73,7 +42,7 @@ export function Board() {
         <h2 className={style.status_title}>
           <strong>Status:&nbsp;</strong>
           {
-            checkIfIsGameOver() ?
+            checkIfIsGameOver(board.squares) ?
               calculateDraw(board.squares) ?
               <span>
                 draw
@@ -110,7 +79,7 @@ export function Board() {
           <Square value={board.squares[8]} onClick={() => setSquareValue(8)} />
         </ul>
         {
-          checkIfIsGameOver() ?
+          checkIfIsGameOver(board.squares) ?
           <span 
             className={`${style["play_again"]} ${calculateWinner(board.squares) === "x" ? style["play_again_blue"] : style["play_again_red"]}`}
             onClick={() => restartGame()}>
