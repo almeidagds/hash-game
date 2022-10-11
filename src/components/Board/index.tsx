@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Player from "../../classes/player";
 import { checkIfIsGameOver, calculateDraw, calculateWinner } from "../../common/scripts/board-functions";
+import { GameDifficulties } from "../../enums/game-difficulties";
 import style from "./Board.module.scss"
 import { Square } from "./Square";
 
@@ -10,7 +11,7 @@ export function Board() {
     squares: Array(9).fill(null),
     xIsNext: true
   });
-  const player = new Player("o");
+  const player = new Player("o", GameDifficulties.impossible);
   
   function setSquareValue(index: number) {
 

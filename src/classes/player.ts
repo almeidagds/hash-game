@@ -1,15 +1,27 @@
 import { calculateDraw, calculateWinner } from "../common/scripts/board-functions";
 import { squareOptions } from "../components/Board/Square";
+import { GameDifficulties } from "../enums/game-difficulties";
+
 
 export default class Player {
-    maxDepth: number;
-    nodesMap: Map<any, any>;
-    symbol: squareOptions;
-
-    constructor(symbol: squareOptions, maxDepth = 2) {
-        this.maxDepth = maxDepth;
-        this.nodesMap = new Map();
+    public  symbol: squareOptions;
+    public  difficulty: GameDifficulties; 
+    private  _maxDepth: number;
+    
+    constructor(symbol: squareOptions, difficulty: GameDifficulties = GameDifficulties.impossible) {
         this.symbol = symbol;
+        this.difficulty = difficulty;
+        this._maxDepth = this._getMaxDepthByDifficulty(difficulty);
+    }
+
+    private _getMaxDepthByDifficulty(difficulty: GameDifficulties) {
+        const difficultiesDepths = {
+            [GameDifficulties.easy]: 2,
+            [GameDifficulties.medium]: 4,
+            [GameDifficulties.hard]: 6,
+            [GameDifficulties.impossible]: -1
+        }
+        return difficultiesDepths[difficulty];
     }
 
     public getAvailableMoves(board: squareOptions[]): number[] {
@@ -30,7 +42,7 @@ export default class Player {
         let bestScore = isCPUPlaying ? -100 : 100;
         let bestPositionToPlay = availableMoves[Math.floor(Math.random() * availableMoves.length)];
 
-        if (isDraw || winner || depth === this.maxDepth) {
+        if (isDraw || winner || depth === this._maxDepth) {
             let score = 0;
             if (winner === this.symbol) {
                 score = 100 - depth;
