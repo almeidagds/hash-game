@@ -1,12 +1,12 @@
 @import "reset.module.scss";
-
+@import "common/styles/_variables.scss";
 html {
     height: 100%;
     width: 100%;
 }
 
 body {
-    background-color: #28293D;
+    background-color: $deep-ocean-blue;
     height: 100%;
     width: 100%;
     display: flex;

@@ -1,10 +1,10 @@
 import style from './App.module.scss';
-import { Board } from './components/Board';
+import AppRouter from './routes';
 
 function App() {
   return (
     <div className={style.App}>
-      <Board />
+      <AppRouter />
     </div>
   );
 }
