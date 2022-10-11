@@ -1,0 +1,14 @@
+@import "../../common/styles/variables";
+
+.not-found {
+    color: $white;
+    text-align: center;
+
+    &__title {
+        font-size: 12em;
+    }
+
+    &__description {
+        font-size: 1em;
+    }
+}

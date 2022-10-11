@@ -4,7 +4,7 @@ export type squareOptions = "x" | "o" | null;
 
 interface Props {
     value: squareOptions;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 export function Square({value, onClick}: Props) {
