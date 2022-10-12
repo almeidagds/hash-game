@@ -3,6 +3,7 @@ import Player from "../../classes/player";
 import { checkIfIsGameOver, calculateDraw, calculateWinner } from "../../common/scripts/board-functions";
 import { GameDifficulties } from "../../enums/game-difficulties";
 import style from "./Board.module.scss"
+import { Menu } from "./Menu";
 import { Square } from "./Square";
 
 export function Board() {
@@ -11,7 +12,7 @@ export function Board() {
     squares: Array(9).fill(null),
     xIsNext: true
   });
-  const player = new Player("o", GameDifficulties.impossible);
+  const player = new Player("o", GameDifficulties.hard);
   
   function setSquareValue(index: number) {
 
@@ -56,6 +57,7 @@ export function Board() {
   
   return (
       <div className={style.board}>
+        <Menu />
         <h2 className={style.status_title}>
           <strong>Status:&nbsp;</strong>
           {

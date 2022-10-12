@@ -1,0 +1,21 @@
+@import "../../../common/styles/_variables.scss";
+
+.menu {
+    background-color: $dark-ocean-blue;
+    color: #fff;
+    padding: .5em 1em;
+    border-radius: 8px;
+
+    &__difficulty {
+        background-color: $deep-ocean-blue;
+        color: #fff;
+        margin: 0 0 0 10px;
+        border-radius: 8px;
+        padding: .2em .5em;
+        border: none;
+
+        &:focus-visible {
+            outline: none;
+        }
+    }
+}
