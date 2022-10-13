@@ -2,20 +2,52 @@
 
 .menu {
     background-color: $dark-ocean-blue;
-    color: #fff;
+    color: $white;
     padding: .5em 1em;
     border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: all .5s ease;
 
     &__difficulty {
-        background-color: $deep-ocean-blue;
-        color: #fff;
-        margin: 0 0 0 10px;
-        border-radius: 8px;
-        padding: .2em .5em;
-        border: none;
+        padding: 4px 8px;
 
-        &:focus-visible {
-            outline: none;
+        &__label {
+            border-left: 2px solid $light-gray;
+            margin-left: 10px;
+            padding-left: 16px;
+        }
+        
+        &__input {
+            background-color: $deep-ocean-blue;
+            color: $white;
+            margin: 0 0 0 10px;
+            border-radius: 8px;
+            padding: .2em .5em;
+            border: none;
+            
+            &:focus-visible {
+                outline: none;
+            }
+        }
+    }
+
+    &__game-mode {
+        padding: 4px 8px;
+        
+        &__input {
+            appearance: none;
+
+            &:checked + label {
+                color: $white;
+            }
+        }
+
+        &__label {
+            color: $light-gray;
+            transition: .3s all ease;
+            cursor: pointer;
         }
     }
 }
