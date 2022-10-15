@@ -54,10 +54,18 @@ export function Board() {
       xIsNext: board.xIsNext
     });
   }
+
+  function printDifficulty() {
+    console.log("the difficulty has changed.");
+  }
+
+  function printPlayersQuantity() {
+    console.log("the players quantity has changed.");
+  }
   
   return (
       <div className={style.board}>
-        <Menu />
+        <Menu handleDifficultyChange={printDifficulty} handlePlayersChange={printPlayersQuantity} />
         <h2 className={style.status_title}>
           <strong>Status:&nbsp;</strong>
           {

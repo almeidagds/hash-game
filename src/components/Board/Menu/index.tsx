@@ -2,7 +2,12 @@ import { useState } from "react";
 import { GameDifficulties } from "../../../enums/game-difficulties";
 import styles from "./Menu.module.scss";
 
-export function Menu() {
+interface IMenu {
+    handlePlayersChange: () => any
+    handleDifficultyChange: () => any,
+}
+export function Menu({ handleDifficultyChange, handlePlayersChange }: IMenu) {
+
     let [players, setPlayers] = useState(1);
 
     return (
@@ -13,7 +18,8 @@ export function Menu() {
                     id="one-player" 
                     name="game-mode" 
                     value="1" 
-                    className={styles["menu__game-mode__input"]} />
+                    className={styles["menu__game-mode__input"]} 
+                    onChange={() => handlePlayersChange()}/>
                 <label htmlFor="one-player" 
                     className={styles["menu__game-mode__label"]} 
                     onClick={() => setPlayers(1)}>
@@ -24,7 +30,8 @@ export function Menu() {
                     id="two-players" 
                     name="game-mode" 
                     value="2 players" 
-                    className={styles["menu__game-mode__input"]} />
+                    className={styles["menu__game-mode__input"]}
+                    onChange={() => handlePlayersChange()} />
                 <label htmlFor="two-players"
                     className={styles["menu__game-mode__label"]} 
                     onClick={() => setPlayers(2)}>
@@ -41,7 +48,8 @@ export function Menu() {
                 <select id="difficulty" 
                     name="difficulty" 
                     className={styles["menu__difficulty__input"]}
-                    disabled={players !== 1}>
+                    disabled={players !== 1}
+                    onChange={handleDifficultyChange()}>
                     {
                         Object.keys(GameDifficulties).map((difficulty: string, index) => {
                             const difficultyNameWithFirstLetterInUpper = difficulty.charAt(0).toLocaleUpperCase() + difficulty.slice(1);
