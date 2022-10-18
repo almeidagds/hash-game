@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/github/last-commit/almeidagds/hash-game" alt="GitHub last commit"/>
 </div>
 
-<h2>Sumário</h2>
+<h2>Summary</h2>
 <ol>
   <li><a href="#description">Description</a></li>
 </ol>
