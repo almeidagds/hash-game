@@ -12,4 +12,4 @@
 </ol>
 
 <h2 id="description">Description</h2>
-<p>A react game made using React framework.</p>
+<p>This repository contains a hash game coded using React Framework.</p>
